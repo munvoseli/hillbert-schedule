@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+.dia {
+	position: relative;
+}
+.dia div, .dia p, .dia h3 {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+.dia p {
+	padding-left: 5px;
+	border-left: 5px #000 solid;
+}
+</style>
+</head>
+<body>
+<p>h</p>
+<div class="dia">
+<div style="left:15em;top:0em;">
+	<h3>gl context and sdl window<br>(do this first)</h3>
+	<p style="left:0em;top:4em;">SDL_Init</p>
+	<p style="left:0em;top:6em;">(rgb, depth, doublebuf)<br>SDL_GL_SetAttribute<!--before win creation--></p>
+	<p style="left:0em;top:9em;">SDL_CreateWindow<br>SDL_GL_CreateContext</p>
+	<p style="left:2em;top:12em;">(suggested: win resize event)<br>SDL_GetWindowSize<br>glViewport</p>
+</div>
+<div style="left:35em;top:19em;">
+	<h3>making vbo (object in frame)</h3>
+	<p style="left:5em;top:3em;">glGenBuffers<br>glBindBuffer</p>
+	<p style="left:0;top:6em;">glBufferData</p>
+	<p style="left:10em;top:6em;">glVertexAttribPointer</p>
+	<p style="left:0em;top:8em;">(when done using it: glDeleteBuffers)</p>
+</div>
+<div style="left: 0; top: 19em;">
+	<h3>setting up shader program</h3>
+	<p style="left:0;top:3em;">(vert)<br>glCreateShader<br>glShaderSource<br>glCompileShader</p>
+	<p style="left:20em;top:3em;">(frag)<br>glCreateShader<br>glShaderSource<br>glCompileShader</p>
+	<p style="left:5em;top:9em;">(now to set up the shader program)<br>glCreateProgram<br>glAttachShader (for both vert and frag)<br>glLinkProgram</p>
+	<p style="left:0;top:15em;">(vert)<br>glDeleteShader</p>
+	<p style="left:10em;top:15em;">(frag)<br>glDeleteShader</p>
+	<p style="left:20em;top:15em;">glUseProgram</p>
+</div>
+<div style="left:35em;top:30em;">
+	<h3>render</h3>
+	<p style="left:0;top:3em;">(for each vbo)<br>glEnableVertexAttribArray<br>glDrawArrays<br>glDisableVertexAttribArray</p>
+	<p style="left:0;top:9em;">SDL_GL_SwapWindow (for each frame)</p>
+</div>
+<div style="left:5em;top:40em;">
+	<h3>end-of-program cleanup</h3>
+	<p style="left:0;top:3em;">SDL_GL_DeleteContext<br>SDL_Quit</p>
+</div>
+</body>
+</html>
